@@ -17,7 +17,7 @@ import { initEmailJS } from './utils/emailUtils';
 import './App.css';
 import './styles/Menu.css';
 
-// Bảng màu tùy chỉnh - sáng hơn
+// Bảng màu tùy chỉnh
 const customColors = {
   primary: '#4285f4',  // Xanh dương Google
   secondary: '#34a853', // Xanh lá Google
@@ -34,22 +34,15 @@ const theme = {
   },
 };
 
-// ID và khóa EmailJS
+// ID EmailJS
 const EMAILJS_PUBLIC_KEY = 'MFD4VpF0hQKeezmoE';
 
 function App() {
   // Khởi tạo dữ liệu mock và EmailJS khi ứng dụng khởi động
   useEffect(() => {
     try {
-      // Khởi tạo dữ liệu mock
-      console.log('Khởi tạo dữ liệu mock...');
       initializeMockData();
-      
-      // Khởi tạo EmailJS
-      console.log('Khởi tạo EmailJS...');
       initEmailJS(EMAILJS_PUBLIC_KEY);
-      
-      console.log('Khởi tạo ứng dụng hoàn tất');
     } catch (error) {
       console.error('Lỗi khi khởi tạo ứng dụng:', error);
     }
