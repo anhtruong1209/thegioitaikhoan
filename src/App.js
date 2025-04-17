@@ -34,9 +34,6 @@ const theme = {
   },
 };
 
-// ID và khóa EmailJS
-const EMAILJS_PUBLIC_KEY = 'MFD4VpF0hQKeezmoE';
-
 function App() {
   // Khởi tạo dữ liệu mock và EmailJS khi ứng dụng khởi động
   useEffect(() => {
@@ -46,8 +43,13 @@ function App() {
       initializeMockData();
       
       // Khởi tạo EmailJS
-      console.log('Khởi tạo EmailJS...');
-      initEmailJS(EMAILJS_PUBLIC_KEY);
+      const emailJsKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+      if (emailJsKey) {
+        console.log('Khởi tạo EmailJS...');
+        initEmailJS(emailJsKey);
+      } else {
+        console.error('EMAILJS_PUBLIC_KEY không được định nghĩa trong biến môi trường');
+      }
       
       console.log('Khởi tạo ứng dụng hoàn tất');
     } catch (error) {

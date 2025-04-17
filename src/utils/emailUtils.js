@@ -8,7 +8,6 @@ import emailjs from '@emailjs/browser';
 export const initEmailJS = (publicKey) => {
   try {
     emailjs.init(publicKey);
-    console.log('EmailJS đã được khởi tạo thành công với public key:', publicKey);
   } catch (error) {
     console.error('Lỗi khi khởi tạo EmailJS:', error);
   }
@@ -99,14 +98,12 @@ const sendEmailWithTimeout = (serviceId, templateId, params, timeout = 10000) =>
  */
 export const sendOrderNotificationEmail = async (orderData) => {
   try {
-    console.log('Bắt đầu hàm sendOrderNotificationEmail với dữ liệu:', orderData);
-    
-    // Replace these with your actual EmailJS service ID and template ID
-    const serviceId = 'service_wizznxi';
-    const templateId = 'template_4a6sk0h';
+    // Lấy ServiceID và TemplateID từ biến môi trường
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
     
     if (!serviceId || !templateId) {
-      throw new Error('Thiếu service ID hoặc template ID của EmailJS');
+      throw new Error('Thiếu service ID hoặc template ID của EmailJS trong biến môi trường');
     }
     
     // Kiểm tra dữ liệu đơn hàng có hợp lệ không
@@ -127,8 +124,6 @@ export const sendOrderNotificationEmail = async (orderData) => {
       items: Array.isArray(orderData.items) ? orderData.items : [],
       orderNotes: ensureValue(orderData.orderNotes, 'Không có ghi chú')
     };
-    
-    console.log('Dữ liệu đơn hàng đã kiểm tra:', safeOrderData);
     
     // Kiểm tra nếu không có items nào
     if (safeOrderData.items.length === 0) {
@@ -164,8 +159,6 @@ export const sendOrderNotificationEmail = async (orderData) => {
       order_notes: safeOrderData.orderNotes
     };
     
-    console.log('Tham số template email:', JSON.stringify(templateParams, null, 2));
-    
     // Gửi email với timeout 15 giây
     const response = await sendEmailWithTimeout(
       serviceId, 
@@ -174,7 +167,6 @@ export const sendOrderNotificationEmail = async (orderData) => {
       15000
     );
     
-    console.log('Email đã được gửi thành công:', response);
     return response;
   } catch (error) {
     console.error('Lỗi khi gửi email:', error);
