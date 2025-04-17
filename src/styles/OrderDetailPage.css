@@ -1,0 +1,80 @@
+/* Existing styles if any */
+
+/* Order item styling */
+.order-items-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  border-radius: 8px;
+}
+
+.order-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-item-container {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+}
+
+.order-item-image {
+  flex-shrink: 0;
+}
+
+.order-item-details {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.order-item-name {
+  flex: 2;
+}
+
+.order-item-price {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-summary {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.order-summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.order-summary-item.total {
+  margin-top: 8px;
+}
+
+/* Profile card styling */
+.profile-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .order-item-details {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .order-item-price {
+    width: 100%;
+  }
+} 

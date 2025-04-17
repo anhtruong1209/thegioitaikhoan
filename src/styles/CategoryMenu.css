@@ -1,0 +1,129 @@
+.category-menu {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.category-menu-list {
+  border-right: none !important;
+}
+
+.category-menu .ant-menu-item {
+  height: 48px;
+  line-height: 48px;
+  margin: 0 !important;
+  padding-left: 16px !important;
+  border-radius: 0 !important;
+  transition: all 0.3s;
+}
+
+.category-menu .ant-menu-submenu-title {
+  height: 48px;
+  line-height: 48px;
+  margin: 0 !important;
+  padding-left: 16px !important;
+  transition: all 0.3s;
+}
+
+.category-menu .ant-menu-item:hover,
+.category-menu .ant-menu-submenu-title:hover {
+  color: #1890ff;
+  background-color: #f0f7ff;
+}
+
+.category-menu .ant-menu-item-selected {
+  background-color: #e6f7ff !important;
+  color: #1890ff !important;
+  font-weight: 500;
+}
+
+.category-menu .ant-menu-submenu-arrow {
+  right: 16px;
+}
+
+.category-menu .ant-menu-submenu-open .ant-menu-submenu-title {
+  color: #1890ff;
+  background-color: #f0f7ff;
+}
+
+.category-menu .ant-menu-submenu-title .anticon {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.category-menu .ant-menu-item .anticon {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+/* Avatar styling for menu items */
+.category-menu .ant-avatar {
+  background-color: transparent;
+  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.menu-item-with-image {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.category-menu .ant-menu-sub {
+  background-color: #f9fafb !important;
+}
+
+.category-menu .ant-menu-sub .ant-menu-item {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 48px !important;
+  font-size: 14px;
+}
+
+.category-menu .ant-menu-sub .ant-menu-item:hover {
+  background-color: #f0f7ff;
+}
+
+.category-menu .ant-menu-submenu-selected .ant-menu-submenu-title {
+  color: #1890ff;
+}
+
+@media (max-width: 768px) {
+  .category-menu {
+    display: none;
+  }
+}
+
+/* Product Cards */
+.product-card {
+  overflow: hidden;
+  transition: all 0.3s;
+  border-radius: 8px;
+  height: 100%;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+} 

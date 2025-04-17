@@ -1,0 +1,37 @@
+.cart-page-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.price-row.total {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1890ff;
+}
+
+.checkout-button {
+  margin-top: 16px;
+  height: 48px;
+  font-size: 16px;
+}
+
+.order-summary {
+  position: sticky;
+  top: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .order-summary {
+    margin-top: 20px;
+    position: static;
+  }
+} 
