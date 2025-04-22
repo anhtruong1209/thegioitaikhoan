@@ -52,7 +52,7 @@ const ContactPage = () => {
                 }}>
                   <CloudOutlined style={{ fontSize: '48px', marginBottom: '16px' }} />
                   <Title level={3} style={{ color: 'white', margin: '0' }}>
-                    Thế Giới Tài Khoản
+                    MimoShop
                   </Title>
                   <Paragraph style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '16px', margin: '8px 0 0' }}>
                     Dịch vụ tài khoản lưu trữ đám mây uy tín

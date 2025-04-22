@@ -1,4 +1,4 @@
-# Thế Giới Tài Khoản
+# MimoShop
 
 Website cung cấp tài khoản dịch vụ chính hãng với giá ưu đãi.
 

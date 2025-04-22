@@ -10,7 +10,7 @@ const AboutPage = () => {
       <Row gutter={[24, 48]}>
         <Col span={24} style={{ textAlign: 'center' }}>
           <Title level={1} style={{ fontWeight: 700, marginBottom: 16 }}>
-            Về Thế Giới Tài Khoản
+            Về MimoShop
           </Title>
           <Paragraph style={{ fontSize: '16px', maxWidth: '800px', margin: '0 auto' }}>
             Chúng tôi là đơn vị cung cấp tài khoản lưu trữ đám mây uy tín, giá rẻ với dung lượng lớn và cam kết sử dụng lâu dài.
@@ -29,7 +29,7 @@ const AboutPage = () => {
               <Col xs={24} md={12}>
                 <Title level={3}>Sứ mệnh của chúng tôi</Title>
                 <Paragraph style={{ fontSize: '16px', lineHeight: '1.8' }}>
-                  Thế Giới Tài Khoản ra đời với mục đích cung cấp các giải pháp lưu trữ đám mây chất lượng cao với chi phí hợp lý cho cả cá nhân và doanh nghiệp.
+                  MimoShop ra đời với mục đích cung cấp các giải pháp lưu trữ đám mây chất lượng cao với chi phí hợp lý cho cả cá nhân và doanh nghiệp.
                 </Paragraph>
                 <Paragraph style={{ fontSize: '16px', lineHeight: '1.8' }}>
                   Với nhiều năm kinh nghiệm trong lĩnh vực công nghệ thông tin và đối tác chiến lược là các nhà cung cấp cloud hàng đầu, chúng tôi tự tin mang đến các dịch vụ ổn định, an toàn và tiết kiệm chi phí cho khách hàng.

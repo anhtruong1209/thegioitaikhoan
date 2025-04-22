@@ -32,7 +32,7 @@ import LoginModal from './LoginModal';
 import { getCartItemsCount } from '../utils/cartUtils';
 
 // Import site logo directly
-import siteLogo from '../assets/images/google-one.webp';
+import { SITE_LOGO } from '../data/imageUrls';
 
 // Import CSS
 import '../styles/Layout.css';
@@ -314,8 +314,8 @@ const MainLayout = () => {
         {/* Logo và tên thương hiệu */}
         <div className="logo-container">
           <Link to="/">
-            <img src={siteLogo} alt="Logo Thế Giới Tài Khoản" className="logo" />
-            <span className="brand-name">Thế Giới Tài Khoản</span>
+            <img src={SITE_LOGO} alt="Logo MimoShop" className="logo" />
+            <span className="brand-name">MimoShop</span>
           </Link>
         </div>
 
@@ -454,11 +454,11 @@ const MainLayout = () => {
           <Row gutter={[48, 32]}>
             <Col xs={24} sm={12} md={8} lg={6}>
               <div className="footer-logo">
-                <img src={siteLogo} alt="Logo Thế Giới Tài Khoản" className="logo" />
-                <h3>Thế Giới Tài Khoản</h3>
+                <img src={SITE_LOGO} alt="Logo MimoShop" className="logo" />
+                <h3>MimoShop</h3>
               </div>
               <p>Dịch vụ cung cấp tài khoản lưu trữ đám mây chính hãng với giá cả phải chăng.</p>
-              <p><strong>Email:</strong> <a href="mailto:support@thegioi-taikhoan.com">support@thegioi-taikhoan.com</a></p>
+              <p><strong>Email:</strong> <a href="mailto:sdtla0911114819@gmail.com">sdtla0911114819@gmail.com</a></p>
               <p><strong>Điện thoại:</strong> <a href="tel:+84832206397">0832 206 397</a></p>
             </Col>
             
@@ -496,7 +496,7 @@ const MainLayout = () => {
           </Row>
           
           <div className="footer-bottom">
-            <p>© {new Date().getFullYear()} Thế Giới Tài Khoản. Tất cả các quyền được bảo lưu.</p>
+            <p>© {new Date().getFullYear()} MimoShop. Tất cả các quyền được bảo lưu.</p>
           </div>
         </div>
       </Footer>

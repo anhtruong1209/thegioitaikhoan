@@ -6,7 +6,6 @@ import microsoft from '../assets/images/microsoft.png';
 import netflix from '../assets/images/netflix.jpeg';
 import canva from '../assets/images/canva.jpeg';
 import adobe from '../assets/images/adobe-crreative-cloud-1.webp';
-import blogHeader from '../assets/images/blog-header.webp';
 import siteLogo from '../assets/images/logo.webp';
 import drive from '../assets/images/drive.png';
 import chatgpt from '../assets/images/chatgpt.jpg';
