@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Menu, Button, Input, Drawer, Dropdown, Space, Row, Col, Badge, Avatar, Divider } from 'antd';
+import { Layout, Menu, Button, Input, Drawer, Dropdown, Space, Row, Col, Badge, Avatar, Divider, List, Spin, Empty } from 'antd';
 import { Link, useLocation, useNavigate, Outlet } from 'react-router-dom';
 import { 
   HomeOutlined, 
@@ -30,6 +30,8 @@ import {
 import CategoryMenu from './CategoryMenu';
 import LoginModal from './LoginModal';
 import { getCartItemsCount } from '../utils/cartUtils';
+import { searchServices } from '../data/mockData';
+import { formatCurrency, truncateText } from '../utils/helpers';
 
 // Import site logo directly
 import { SITE_LOGO } from '../data/imageUrls';
@@ -117,6 +119,9 @@ const MainLayout = () => {
   const [loginModalVisible, setLoginModalVisible] = useState(false);
   const [user, setUser] = useState(null);
   const [searchValue, setSearchValue] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
   
   // Đường dẫn hiện tại cho việc chọn menu
   const currentPath = location.pathname;
@@ -136,6 +141,48 @@ const MainLayout = () => {
       }
     }
   }, []);
+
+  // Tìm kiếm sản phẩm khi người dùng nhập
+  useEffect(() => {
+    const delaySearch = setTimeout(() => {
+      if (searchValue.trim().length > 1) {
+        performSearch(searchValue);
+      } else {
+        setSearchResults([]);
+        setShowResults(false);
+      }
+    }, 300);
+
+    return () => clearTimeout(delaySearch);
+  }, [searchValue]);
+
+  // Đóng dropdown kết quả khi click ngoài
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const searchContainer = document.querySelector('.search-container');
+      if (searchContainer && !searchContainer.contains(event.target)) {
+        setShowResults(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Thực hiện tìm kiếm
+  const performSearch = (term) => {
+    setSearchLoading(true);
+    
+    // Giả lập API call
+    setTimeout(() => {
+      const results = searchServices(term);
+      setSearchResults(results.slice(0, 5)); // Giới hạn 5 kết quả
+      setShowResults(true);
+      setSearchLoading(false);
+    }, 300);
+  };
 
   // Theo dõi thay đổi số lượng sản phẩm trong giỏ hàng
   useEffect(() => {
@@ -198,6 +245,84 @@ const MainLayout = () => {
   const handleLogout = () => {
     localStorage.removeItem('user');
     setUser(null);
+  };
+
+  // Đi đến trang chi tiết sản phẩm
+  const goToServiceDetail = (serviceId) => {
+    navigate(`/service/${serviceId}`);
+    setShowResults(false);
+  };
+
+  // Xử lý tìm kiếm khi nhấn nút tìm kiếm
+  const handleSearch = () => {
+    if (searchValue.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchValue.trim())}`);
+      setSearchValue('');
+      setShowResults(false);
+    }
+  };
+
+  // Xử lý khi nhấn Enter trong ô tìm kiếm
+  const handleSearchKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  // Render dropdown kết quả tìm kiếm
+  const renderSearchResults = () => {
+    if (!showResults) return null;
+
+    return (
+      <div className="search-results-dropdown">
+        {searchLoading ? (
+          <div className="search-loading">
+            <Spin size="small" />
+            <span style={{ marginLeft: '10px' }}>Đang tìm kiếm...</span>
+          </div>
+        ) : searchResults.length > 0 ? (
+          <List
+            className="search-results-list"
+            itemLayout="horizontal"
+            dataSource={searchResults}
+            renderItem={item => (
+              <List.Item 
+                onClick={() => goToServiceDetail(item.id)}
+                className="search-result-item"
+              >
+                <List.Item.Meta
+                  avatar={<img src={item.image} alt={item.name} className="search-result-image" />}
+                  title={item.name}
+                  description={
+                    <div>
+                      <div>{truncateText(item.shortDescription, 60)}</div>
+                      <div className="search-result-price">{formatCurrency(item.price)}</div>
+                    </div>
+                  }
+                />
+              </List.Item>
+            )}
+          />
+        ) : (
+          <Empty 
+            description="Không tìm thấy kết quả" 
+            image={Empty.PRESENTED_IMAGE_SIMPLE} 
+            style={{ padding: '20px' }}
+          />
+        )}
+        <div className="search-results-footer">
+          {searchResults.length > 0 && (
+            <Button 
+              type="link" 
+              onClick={handleSearch}
+              className="view-all-results"
+            >
+              Xem tất cả kết quả
+            </Button>
+          )}
+        </div>
+      </div>
+    );
   };
 
   // Menu dropdown cho người dùng đã đăng nhập
@@ -319,16 +444,29 @@ const MainLayout = () => {
           </Link>
         </div>
 
-        {/* Thanh tìm kiếm - đã loại bỏ */}
+        {/* Thanh tìm kiếm */}
         <div className="search-container">
           <Input
             placeholder="Tìm kiếm sản phẩm..."
             prefix={<SearchOutlined />}
             className="search-input"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyPress={handleSearchKeyPress}
+            onFocus={() => {
+              if (searchResults.length > 0) {
+                setShowResults(true);
+              }
+            }}
           />
-          <Button type="primary" className="search-button">
+          <Button 
+            type="primary" 
+            className="search-button"
+            onClick={handleSearch}
+          >
             <SearchOutlined />
           </Button>
+          {renderSearchResults()}
         </div>
 
         {/* Menu máy tính */}
@@ -404,6 +542,17 @@ const MainLayout = () => {
         open={mobileMenuOpen}
         className="mobile-drawer"
       >
+        {/* Thêm thanh tìm kiếm trong menu di động */}
+        <div style={{ padding: '10px 16px 20px' }}>
+          <Input.Search
+            placeholder="Tìm kiếm sản phẩm..."
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onSearch={handleSearch}
+            enterButton
+          />
+        </div>
+
         {renderMenu('inline')}
         
         <div className="mobile-actions" style={{ padding: '16px' }}>

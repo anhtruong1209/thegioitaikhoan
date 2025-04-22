@@ -1,5 +1,6 @@
 // Dữ liệu mẫu cho người dùng và đơn hàng
 // Trong ứng dụng thực tế, dữ liệu này sẽ đến từ API
+import { LOGO_URLS } from '../data/imageUrls';
 export const mockUsers = {
   // user ID là key để dễ dàng tìm kiếm
   '123': {
@@ -366,4 +367,94 @@ export const clearAllOrders = () => {
     console.error('Lỗi khi xóa đơn hàng:', error);
     return false;
   }
+};
+
+// Dữ liệu dịch vụ mẫu
+const services = [
+  {
+    id: 'google-one',
+    name: 'Google One',
+    shortDescription: 'Dịch vụ lưu trữ đám mây từ Google',
+    description: 'Dịch vụ lưu trữ đám mây với dung lượng từ 2TB đến 30TB, bảo hành trọn đời, hỗ trợ đa nền tảng và chia sẻ gia đình.',
+    image: LOGO_URLS.GOOGLE_ONE,
+    price: 249000,
+    category: 'cloud-storage'
+  },
+  {
+    id: 'netflix',
+    name: 'Netflix Premium',
+    shortDescription: 'Tài khoản xem phim 4K, Ultra HD',
+    description: 'Tài khoản Netflix Premium chính hãng xem phim chất lượng 4K, Ultra HD trên 4 thiết bị cùng lúc, không quảng cáo.',
+    image: LOGO_URLS.NETFLIX,
+    price: 299000,
+    category: 'entertainment'
+  },
+  {
+    id: 'spotify',
+    name: 'Spotify Premium',
+    shortDescription: 'Nghe nhạc không quảng cáo, chất lượng cao',
+    description: 'Nghe nhạc không quảng cáo, chất lượng cao, tải về nghe offline, hỗ trợ đa nền tảng và đồng bộ trên nhiều thiết bị.',
+    image: LOGO_URLS.SPOTIFY,
+    price: 159000,
+    category: 'entertainment'
+  },
+  {
+    id: 'microsoft-365',
+    name: 'Microsoft 365',
+    shortDescription: 'Bộ ứng dụng văn phòng Microsoft',
+    description: 'Bộ ứng dụng văn phòng Microsoft Word, Excel, PowerPoint với 6TB OneDrive, cập nhật liên tục phiên bản mới nhất.',
+    image: LOGO_URLS.MICROSOFT_365,
+    price: 599000,
+    category: 'office'
+  },
+  {
+    id: 'adobe-creative-cloud',
+    name: 'Adobe Creative Cloud',
+    shortDescription: 'Trọn bộ công cụ thiết kế chuyên nghiệp',
+    description: 'Trọn bộ công cụ thiết kế chuyên nghiệp: Photoshop, Illustrator, Premiere Pro, After Effects và nhiều ứng dụng khác.',
+    image: LOGO_URLS.ADOBE,
+    price: 899000,
+    category: 'graphics'
+  },
+  {
+    id: 'youtube-premium',
+    name: 'YouTube Premium',
+    shortDescription: 'Xem YouTube không quảng cáo, phát trong nền',
+    description: 'Xem YouTube không quảng cáo, phát nhạc trong nền, tải video về xem offline, truy cập YouTube Music Premium.',
+    image: LOGO_URLS.YOUTUBE,
+    price: 179000,
+    category: 'entertainment'
+  }
+];
+
+// Hàm lấy tất cả dịch vụ
+export const getAllServices = () => {
+  return services;
+};
+
+// Hàm lấy dịch vụ theo ID
+export const getServiceById = (id) => {
+  return services.find(service => service.id === id);
+};
+
+// Hàm lấy dịch vụ theo danh mục
+export const getServicesByCategory = (category) => {
+  return services.filter(service => service.category === category);
+};
+
+// Hàm tìm kiếm dịch vụ theo từ khóa
+export const searchServices = (keyword) => {
+  const searchTerm = keyword.toLowerCase();
+  return services.filter(service => 
+    service.name.toLowerCase().includes(searchTerm) ||
+    service.description.toLowerCase().includes(searchTerm) ||
+    service.shortDescription.toLowerCase().includes(searchTerm)
+  );
+};
+
+export default {
+  getAllServices,
+  getServiceById,
+  getServicesByCategory,
+  searchServices
 }; 

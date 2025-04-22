@@ -12,6 +12,7 @@ import CheckoutPage from './pages/CheckoutPage';
 import ProfilePage from './pages/ProfilePage';
 import OrdersPage from './pages/OrdersPage';
 import OrderDetailPage from './pages/OrderDetailPage';
+import SearchResults from './pages/SearchResults';
 import { initializeMockData } from './data/mockData';
 import { initEmailJS } from './utils/emailUtils';
 import './App.css';
@@ -67,6 +68,7 @@ function App() {
           <Route path="/service/:serviceId" element={<ServiceDetailPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/search" element={<SearchResults />} />
           
           {/* Routes cho trang cá nhân */}
           <Route path="/profile" element={<ProfilePage />} />
