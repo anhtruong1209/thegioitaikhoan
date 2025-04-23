@@ -145,9 +145,9 @@ const ProductSlider = ({ products, title }) => {
               <div className="product-price-container">
                 {product.discount ? (
                   <Space direction="vertical" size={0} className="price-space">
-                    <Text className="original-price">${product.originalPrice}/năm</Text>
+                    <Text className="original-price">${product.originalPrice}</Text>
                     <Title level={4} className="discounted-price">
-                      ${product.price}/năm
+                      ${product.price}
                     </Title>
                   </Space>
                 ) : (

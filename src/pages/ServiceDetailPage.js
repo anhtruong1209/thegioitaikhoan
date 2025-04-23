@@ -50,11 +50,11 @@ const serviceDetails = {
     color: '#4285f4',
     gradient: 'linear-gradient(135deg, #4285f4, #34a853)',
     pricing: [
-      { name: 'Gói 2TB', price: '249,000₫/năm', originalPrice: '350,000₫', discount: '29%' },
-      { name: 'Gói 5TB', price: '349,000₫/năm', originalPrice: '500,000₫', discount: '30%' },
-      { name: 'Gói 10TB', price: '449,000₫/năm', originalPrice: '650,000₫', discount: '31%', popular: true },
-      { name: 'Gói 20TB', price: '549,000₫/năm', originalPrice: '800,000₫', discount: '31%' },
-      { name: 'Gói 30TB', price: '649,000₫/năm', originalPrice: '950,000₫', discount: '32%' },
+      { name: 'Gói 2TB', price: '249,000₫', originalPrice: '350,000₫', discount: '29%' },
+      { name: 'Gói 5TB', price: '349,000₫', originalPrice: '500,000₫', discount: '30%' },
+      { name: 'Gói 10TB', price: '449,000₫', originalPrice: '650,000₫', discount: '31%', popular: true },
+      { name: 'Gói 20TB', price: '549,000₫', originalPrice: '800,000₫', discount: '31%' },
+      { name: 'Gói 30TB', price: '649,000₫', originalPrice: '950,000₫', discount: '32%' },
     ],
     features: [
       'Tài khoản chính chủ – nâng cấp trực tiếp trên Gmail của bạn',
@@ -103,10 +103,10 @@ const serviceDetails = {
     color: '#0f9d58',
     gradient: 'linear-gradient(135deg, #4285f4, #0f9d58)',
     pricing: [
-      { name: 'Gói 2TB', price: '249,000₫/năm', originalPrice: '350,000₫', discount: '29%' },
-      { name: 'Gói 5TB', price: '349,000₫/năm', originalPrice: '500,000₫', discount: '30%' },
-      { name: 'Gói 10TB', price: '449,000₫/năm', originalPrice: '650,000₫', discount: '31%', popular: true },
-      { name: 'Gói 20TB', price: '549,000₫/năm', originalPrice: '800,000₫', discount: '31%' },
+      { name: 'Gói 2TB', price: '249,000₫', originalPrice: '350,000₫', discount: '29%' },
+      { name: 'Gói 5TB', price: '349,000₫', originalPrice: '500,000₫', discount: '30%' },
+      { name: 'Gói 10TB', price: '449,000₫', originalPrice: '650,000₫', discount: '31%', popular: true },
+      { name: 'Gói 20TB', price: '549,000₫', originalPrice: '800,000₫', discount: '31%' },
     ],
     features: [
       'Truy cập tập tin từ mọi thiết bị, mọi nơi',
@@ -155,10 +155,10 @@ const serviceDetails = {
     color: '#fa0f00',
     gradient: 'linear-gradient(135deg, #fa0f00, #a30c00)',
     pricing: [
-      { name: 'Gói dành cho cá nhân', price: '650,000₫/năm', originalPrice: '1,290,000₫', discount: '50%' },
-      { name: 'Gói Photography', price: '380,000₫/năm', originalPrice: '720,000₫', discount: '47%' },
-      { name: 'Gói dành cho doanh nghiệp', price: '950,000₫/năm', originalPrice: '1,990,000₫', discount: '52%', popular: true },
-      { name: 'Gói Học sinh - Sinh viên', price: '350,000₫/năm', originalPrice: '650,000₫', discount: '46%' },
+      { name: 'Gói dành cho cá nhân', price: '650,000₫', originalPrice: '1,290,000₫', discount: '50%' },
+      { name: 'Gói Photography', price: '380,000₫', originalPrice: '720,000₫', discount: '47%' },
+      { name: 'Gói dành cho doanh nghiệp', price: '950,000₫', originalPrice: '1,990,000₫', discount: '52%', popular: true },
+      { name: 'Gói Học sinh - Sinh viên', price: '350,000₫', originalPrice: '650,000₫', discount: '46%' },
     ],
     features: [
       'Truy cập toàn bộ ứng dụng sáng tạo của Adobe như Photoshop, Illustrator, InDesign, Premiere Pro...',
